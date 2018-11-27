@@ -18,5 +18,30 @@ public class Neeko extends JFrame
         armando.setVisible(true);
         armando.getContentPane().setBackground(Color.black);
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+        
+        String menu;
+        
+        
+        do{
+          menu=JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR");
+            menu=menu.toLowerCase
+          if(menu.equals("capturas")){
+            
+          }else if(menu.equals("consultas")){
+            
+          }else if(menu.equals("cancelaciones")){
+            
+          }else if(menu.equals("cambios")){
+            
+          }else if(menu.equals("salir")){
+            
+          }else{
+            
+          }
+          
+          
+          
+        }while(menu!=5)
+        
      }
 }
