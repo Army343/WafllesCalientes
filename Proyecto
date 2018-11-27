@@ -1,0 +1,22 @@
+import java.io.*;
+import javax.swing.*;
+import java.util.*;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+public class Neeko extends JFrame
+{
+    private Proyecto()
+    {
+        super();
+        this.setTitle("Prueba titulo");
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+    public static void main(String[]args)throws IOException
+    {
+        Proyecto armando= new Proyecto();
+        armando.setVisible(true);
+        armando.getContentPane().setBackground(Color.black);
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+     }
+}
