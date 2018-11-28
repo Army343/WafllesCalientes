@@ -19,57 +19,85 @@ public class Neeko extends JFrame
         armando.getContentPane().setBackground(Color.black);
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         
-        int menu;
-        int cap;
-        
+        int menu, subm;                //Menú y submenús (en ese orden)
+        int x=1;                       //Variable ubicación y clave
+        String clave=" ";              //Detalle extra (Lo puedes quitar si quieres)
+        int[] act=new int[114]         //Activación miembros (alumnos y profesores)
+        String[] nomp=new String[20];  //Nombre profesor
+        String[] apelpp=new String[20];//Apellido paterno profesor
+        String[] apelmp=new String[20];//Apellido materno profesor
+        String[] noma=new String[94];  //Nombre alumno
+        String[] mat=new String[14];   //Nombre materia
+        int[] nump=new int[20];        //Número profesror
+        int[] numa=new int[31];        //Número alumno
+        int[] nomat=new int[14];       //Número materia
+        float[] califa=new float[94];  //Primera calificación
+        float[] califb=new float[94];  //Segunda calificación
+        float[] califc=new float[94];  //Tercera calificación
+        float[] prom=new float[94];    //Promedio
         
         do{
           menu=Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
           if(menu==1){
             do{
-              cap=Integer.parseInt(JOptionPane.show InputDialog(1-Capturar profesor\n 2-Asignar materia\n 3-Capturar alumno\n 4-Capturar calificaciones\n 5-Regresar));
-              if(cap==1){
+              subm=Integer.parseInt(JOptionPane.show InputDialog(1-Capturar profesor\n 2-Asignar materia\n 3-Capturar alumno\n 4-Capturar calificaciones\n 5-Regresar));
+              if(subm==1){
+                clave=JOptionPane.showInputDialog(Ingrese clave de cambio);
+                  clave=clave.toLowerCase();
+                if(clave.equals("contraseña")){
+                  //do{
+                    nump[x]=x;
+                    nomp[x]=JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
+                     nomp[x]=nomp[x].toUpperCas();
+                    apelpp[x]=JOptionPane.showInputDialog("Ingrese el apellido paterno del profesor.");
+                     apelpp[x]=apelpp[x].toUpperCase();
+                    apelmp[x]=JOptionPane.showInputDialog("Ingrese el apellido materno del profesor.");
+                     apelmp[x]=apelmp[x].toUpperCase();
+                    JOptionPane.showMessageDialog(null,"La clave de maestro es:\n"+nump+apelpp[x].substring(0,2)+apelmp[x].charAt(0)+nomp[x].charAt(0),"CLAVE",JOptionPane.PLAIN_MESSAGE);
+                  //}while();
+                }else{
+                JOptionPane.showMessageDialog(null,"Disculpe, no le puedo permitir el acceso.","ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+              }else if(subm==2){
                 
-              }else if(cap==2){
+              }else if(subm==3){
                 
-              }else if(cap==3){
+              }else if(subm==4){
                 
-              }else if(cap==4){
-                
-              }else if(cap==5){
+              }else if(subm==5){
                 
               }else{
                 
               }
-            }while(cap>5)
+            }while(subm!=5)
           }else if(menu==2){
             do{
-              cap=Integer.parseInt(JOptionPane.show InputDialog(1-Consultar profesores\n 2-Consultar alumnos\n 3-Consultar calificaciones\n 4-Regresar));
-              if(cap==1){
+              subm=Integer.parseInt(JOptionPane.show InputDialog(1-Consultar profesores\n 2-Consultar alumnos\n 3-Consultar calificaciones\n 4-Regresar));
+              if(subm==1){
                 
-              }else if(cap==2){
+              }else if(subm==2){
                 
-              }else if (cap==3){
+              }else if (subm==3){
                 
-              }else ig(cap==4){
+              }else if(subm==4){
                 
               }else{
               }
-            }while(cap>4);
+            }while(subm!=4);
           }else if(menu==3){
             do{
               cap=Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
-              if(cap==1){
+              if(subm==1){
                 
-              }else if(cap==2){
+              }else if(subm==2){
                 
-              }else if(cap==3){
+              }else if(subm==3){
                 
               }else{
                 
               }
               
-            }while();
+            }while(subm!=3);
           }else if(menu==4){
             
           }else if(menu==5){
