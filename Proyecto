@@ -1,12 +1,13 @@
+package com.company;
 import java.io.*;
 import javax.swing.*;
 import java.util.*;
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Graphics;
-public class Neeko extends JFrame
+public class proyectoProgra extends JFrame
 {
-    private Proyecto()
+    private proyectoProgra()
     {
         super();
         this.setTitle("Prueba titulo");
@@ -14,15 +15,16 @@ public class Neeko extends JFrame
     }
     public static void main(String[]args)throws IOException
     {
-        Proyecto armando= new Proyecto();
+        proyectoProgra armando= new proyectoProgra();
         armando.setVisible(true);
         armando.getContentPane().setBackground(Color.black);
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        
-        int menu, subm;                //Menú y submenús (en ese orden)
+
+        int menu, subm=0;                //Menú y submenús (en ese orden)
+        int cap;                           //no se de que era el cap que tu pusiste hasta ael final casi pero no tenia la variable
         int x=1;                       //Variable ubicación y clave
         String clave=" ";              //Detalle extra (Lo puedes quitar si quieres)
-        int[] act=new int[114]         //Activación miembros (alumnos y profesores)
+        int[] act=new int[114];         //Activación miembros (alumnos y profesores)
         String[] nomp=new String[20];  //Nombre profesor
         String[] apelpp=new String[20];//Apellido paterno profesor
         String[] apelmp=new String[20];//Apellido materno profesor
@@ -35,77 +37,77 @@ public class Neeko extends JFrame
         float[] califb=new float[94];  //Segunda calificación
         float[] califc=new float[94];  //Tercera calificación
         float[] prom=new float[94];    //Promedio
-        
+
         do{
-          menu=Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
-          if(menu==1){
-            do{
-              subm=Integer.parseInt(JOptionPane.show InputDialog(1-Capturar profesor\n 2-Asignar materia\n 3-Capturar alumno\n 4-Capturar calificaciones\n 5-Regresar));
-              if(subm==1){
-                clave=JOptionPane.showInputDialog(Ingrese clave de cambio);
-                  clave=clave.toLowerCase();
-                if(clave.equals("contraseña")){
-                  //do{
-                    nump[x]=x;
-                    nomp[x]=JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
-                     nomp[x]=nomp[x].toUpperCas();
-                    apelpp[x]=JOptionPane.showInputDialog("Ingrese el apellido paterno del profesor.");
-                     apelpp[x]=apelpp[x].toUpperCase();
-                    apelmp[x]=JOptionPane.showInputDialog("Ingrese el apellido materno del profesor.");
-                     apelmp[x]=apelmp[x].toUpperCase();
-                    JOptionPane.showMessageDialog(null,"La clave de maestro es:\n"+nump+apelpp[x].substring(0,2)+apelmp[x].charAt(0)+nomp[x].charAt(0),"CLAVE",JOptionPane.PLAIN_MESSAGE);
-                  //}while();
-                }else{
-                JOptionPane.showMessageDialog(null,"Disculpe, no le puedo permitir el acceso.","ERROR",JOptionPane.ERROR_MESSAGE);
-                }
-              }else if(subm==2){
-                
-              }else if(subm==3){
-                
-              }else if(subm==4){
-                
-              }else if(subm==5){
-                
-              }else{
-                
-              }
-            }while(subm!=5)
-          }else if(menu==2){
-            do{
-              subm=Integer.parseInt(JOptionPane.show InputDialog(1-Consultar profesores\n 2-Consultar alumnos\n 3-Consultar calificaciones\n 4-Regresar));
-              if(subm==1){
-                
-              }else if(subm==2){
-                
-              }else if (subm==3){
-                
-              }else if(subm==4){
-                
-              }else{
-              }
-            }while(subm!=4);
-          }else if(menu==3){
-            do{
-              cap=Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
-              if(subm==1){
-                
-              }else if(subm==2){
-                
-              }else if(subm==3){
-                
-              }else{
-                
-              }
-              
-            }while(subm!=3);
-          }else if(menu==4){
-            
-          }else if(menu==5){
-            break;
-          }else{
-            
-          }
-           
-        }while(menu!=5); 
-     }
+            menu=Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
+            if(menu==1){
+                do{
+                    subm=Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n"+ "2-Asignar materia\n"+ "3-Capturar alumno\n"+ "4-Capturar calificaciones\n" +"5-Regresar"));
+                    if(subm==1){
+                        clave=JOptionPane.showInputDialog("Ingrese clave de cambio");
+                        clave=clave.toLowerCase();
+                        if(clave.equals("contraseña")){
+                            do{
+                            nump[x]=x;
+                            nomp[x]=JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
+                            nomp[x]=nomp[x].toUpperCase();
+                            apelpp[x]=JOptionPane.showInputDialog("Ingrese el apellido paterno del profesor.");
+                            apelpp[x]=apelpp[x].toUpperCase();
+                            apelmp[x]=JOptionPane.showInputDialog("Ingrese el apellido materno del profesor.");
+                            apelmp[x]=apelmp[x].toUpperCase();
+                            JOptionPane.showMessageDialog(null,"La clave de maestro es:\n"+nump+apelpp[x].substring(0,2)+apelmp[x].charAt(0)+nomp[x].charAt(0),"CLAVE",JOptionPane.PLAIN_MESSAGE);
+                            }while(true);
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Disculpe, no le puedo permitir el acceso.","ERROR",JOptionPane.ERROR_MESSAGE);
+                        }
+                    }else if(subm==2){
+
+                    }else if(subm==3){
+
+                    }else if(subm==4){
+
+                    }else if(subm==5){
+
+                    }else{
+
+                    }
+                }while(subm!=5);
+            }else if(menu==2){
+                do{
+                    subm=Integer.parseInt(JOptionPane.showInputDialog("1-Consultar profesores\n"+ "2-Consultar alumnos\n"+ "3-Consultar calificaciones\n" +"4-Regresar"));
+                    if(subm==1){
+
+                    }else if(subm==2){
+
+                    }else if (subm==3){
+
+                    }else if(subm==4){
+
+                    }else{
+                    }
+                }while(subm!=4);
+            }else if(menu==3){
+                do{
+                    cap=Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
+                    if(subm==1){
+
+                    }else if(subm==2){
+
+                    }else if(subm==3){
+
+                    }else{
+
+                    }
+
+                }while(subm!=3);
+            }else if(menu==4){
+
+            }else if(menu==5){
+                break;
+            }else{
+
+            }
+
+        }while(menu!=5);
+    }
 }
