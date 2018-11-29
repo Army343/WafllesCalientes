@@ -21,14 +21,17 @@ public class proyectoProgra extends JFrame
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
         int menu=0, subm=0;                //Menú y submenús (en ese orden)
-        int cap;
         int x=1;                       //Variable ubicación y clave
+        int A=0;                         //Variable de número para los alumnos
         int y=1;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
+        int rep;                        //Repeticiones
         int contmat;
         int grupo11191=0, grupo21191=0;
         String clave="";              //Detalle extra (Lo puedes quitar si quieres)
         int otram=0;                //por si el profesor impartira otra materia
-        int[] act=new int[114];         //Activación miembros (alumnos y profesores)
+        int[] actp=new int[20];         //Activación profesores
+        String[] clavp=new String[20];  //Clave profesores
+        int[] acta=new int[94];          //Activación alumnos
         String[] nomp=new String[20];  //Nombre profesor
         String[] apelpp=new String[20];//Apellido paterno profesor
         String[] apelmp=new String[20];//Apellido materno profesor
@@ -44,8 +47,8 @@ public class proyectoProgra extends JFrame
         float[] prom=new float[94];    //Promedio
 
         do {
-                try{
-                menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
+                //try{   //Para eso se encuentra el "else"
+                menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n 1-CAPTURAS\n 2-CONSULTAS\n 3-CANCELACIONES\n 4-CAMBIOS\n 5-SALIR"));
                 if (menu == 1) {
                     do {
                         subm = Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n" + "2-Asignar materia\n" + "3-Capturar alumno\n" + "4-Capturar calificaciones\n" + "5-Regresar"));
@@ -61,14 +64,17 @@ public class proyectoProgra extends JFrame
                                     apelpp[x] = apelpp[x].toUpperCase();
                                     apelmp[x] = JOptionPane.showInputDialog("Ingrese el apellido materno del profesor.");
                                     apelmp[x] = apelmp[x].toUpperCase();
-                                    JOptionPane.showMessageDialog(null, "La clave de maestro es:\n" + nump + apelpp[x].substring(0, 2) + apelmp[x].charAt(0) + nomp[x].charAt(0), "CLAVE", JOptionPane.PLAIN_MESSAGE);
-                                } while (true);
+                                    clavp[x]=nump[x] + apelpp[x].substring(0, 2) + apelmp[x].charAt(0) + nomp[x].charAt(0);
+                                    JOptionPane.showMessageDialog(null, "La clave de maestro es:\n"+clavp[x], "CLAVE", JOptionPane.PLAIN_MESSAGE);
+                                    actp[x]=1;
+                                    rep=JOptionPane.showOptionDialog(null,"¿Desea hacer otra captura?","PROFESOR",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,null,null);
+                                } while (rep==JOptionPane.YES_OPTION);
                             } else {
                                 JOptionPane.showMessageDialog(null, "Disculpe, no le puedo permitir el acceso.", "ERROR", JOptionPane.ERROR_MESSAGE);
                             }
                         } else if (subm == 2) {
                             nump[x] = x;
-                            nomp[x] = JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
+                            nomp[x] = JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");  //¿no sería mejor que fuese por medio de una clave?
                             mat[y] = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n" + "1.-Fundamentos de Programacion\n" + "2.-Matematicas para la computacion\n" + "3.-Temas selectos de algebra" + "4.-Introduccion a la ingenieria\n" + "5.-Estrategias de aprendizaje\n" + "6.-Metodologia de la investigacion\n" + "7.-Programacion Orientada a Objetos\n" + "8.-Fisica 1\n" + "9.-Algebra lineal\n" + "10Organizacion de datos"));
                             ngrupo[y] = Integer.parseInt(JOptionPane.showInputDialog("A que grupo impartira la materia?\n" + "1.-11191\n" + "2.-21191"));
                             contmat = mat[y] + 1;
@@ -115,7 +121,7 @@ public class proyectoProgra extends JFrame
                     } while (subm != 4);
                 } else if (menu == 3) {
                     do {
-                        cap = Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
+                        subm = Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
                         if (subm == 1) {
 
                         } else if (subm == 2) {
@@ -130,16 +136,15 @@ public class proyectoProgra extends JFrame
                 } else if (menu == 4) {
 
                 } else if (menu == 5) {
-                    break;
+                    JOptionPane.showMessageDialog(null,"TENGA UN BUEN DIA, ADIOS","Adios",JOptionPane.INFORMATION_MESSAGE);
+                    armando.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); System.exit(0);
                 } else {
-
+                   JOptionPane.showMessageDialog(null, "por favor ingrese algo valido", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-                }catch(Exception FormatException){
-                    JOptionPane.showMessageDialog(null, "por favor ingrese algo valido", "ERROR", JOptionPane.ERROR_MESSAGE);}
+                //}catch(Exception FormatException){
+                    //}
 
             } while (menu != 5) ;
-        if(menu==5){JOptionPane.showMessageDialog(null,"TENGA UN BUEN DIA, ADIOS","Adios",JOptionPane.INFORMATION_MESSAGE);}
-        if(menu==5){armando.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); System.exit(0);}
 
 
     }
