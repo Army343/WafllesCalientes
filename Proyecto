@@ -77,10 +77,11 @@ public class proyectoProgra extends JFrame
                                 } while (rep==JOptionPane.YES_OPTION);
                             
                         } else if (subm == 2) {
-                           
-                            do {
+                          do {
                                 bus = JOptionPane.showInputDialog("Ingrese la clave de profesor");
                                 for (x = 1; x < 19; x++) {
+                                    grupo11191 = 0;
+                                    grupo21191 = 0;
                                     if (bus.equals(clavp[x])) {
                                         cor = 1;
                                     }
@@ -88,28 +89,105 @@ public class proyectoProgra extends JFrame
                                  do {
                                      if (cor == 1) {
                                          grupo = Integer.parseInt(JOptionPane.showInputDialog("A que grupo impartira la materia?\n\n" + "1.-11191\n\n\n" + "2.-21191"));
-                                         if (grupo11191!=2 ) {
+                                         if (grupo11191!=1 ) {
                                              if (grupo == 1) {
-                                                 mat[y] = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n\n\n\n" + "1.-Fundamentos de Programacion\n\n\n" + "2.-Matematicas para la computacion\n\n\n" + "3.-Temas selectos de algebra\n\n\n" + "4.-Introduccion a la ingenieria\n\n\n" + "5.-Algebra lineal\n"));
-                                                 grupo11191 = grupo11191 + 2;
-                                                 contmat = mat[y] + 1;
-                                                 ngrupo1[y] = 1;
+                                                  asigmat = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n\n\n\n" + "1.-Fundamentos de Programacion\n\n\n" + "2.-Matematicas para la computacion\n\n\n\n" + "3.-Temas selectos de algebra\n\n\n" + "4.-Introduccion a la ingenieria\n\n\n\n" + "5.-Algebra lineal\n\n\n"));
+                                                 grupo11191 = grupo11191 + 1;
+                                                 
+                                                 if(asigmat==1){
+                                                   if(mat[1]!=1){
+                                                     mat[1]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==2){
+                                                   if(mat[2]!=1){
+                                                     mat[2]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==3){
+                                                   if(mat[2]!=1){
+                                                     mat[3]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==4){
+                                                   if(mat[4]!=1){
+                                                     mat[4]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==5){
+                                                   if(mat[5]!=1){
+                                                     mat[5]=1;
+                                                 }
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "Ingrese otra materia.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 
                                              }
-                                         } else if (grupo21191!=2){
+                                         } else if (grupo21191!=1){
                                              if (grupo == 2) {
-                                                 grupo21191 = grupo21191 + 2;
-                                                 mat[y] = Integer.parseInt(JOptionPane.showInputDialog("Que materia Impartira" + "1.-Estrategias de aprendizaje\n" + "2.-Metodologia de la investigacion\n" + "3.-Programacion Orientada a Objetos\n" + "4.-Fisica 1\n" + "5.-Organizacion de datos"));
-                                                 ngrupo2[y] = 2;
-                                         }}
+                                                 grupo21191 = grupo21191 + 1;
+                                                 
+                                                 asigmat = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n\n\n\n" + "1.-Estrategias de aprendizaje\n\n\n" + "2.-Metodologia de la investigacion\n\n\n" + "3.-Programacion Orientada a Objetos\n\n\n" + "4.-Fisica 1\n\n\n" + "5.-Organizacion de datos\n\n\n"));
+                                                 
+                                                 if(asigmat==1){
+                                                   if(mat[6]!=1){
+                                                     mat[6]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==2){
+                                                   if(mat[7]!=1){
+                                                     mat[7]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==3){
+                                                   if(mat[8]!=1){
+                                                     mat[8]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==4){
+                                                   if(mat[9]!=1){
+                                                     mat[9]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "La materia ya está asignada.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 }else if(asigmat==5){
+                                                   if(mat[10]!=1){
+                                                     mat[10]=1;
+                                                   }else{
+                                                     JOptionPane.showMessageDialog(null, "Ingrese otra materia.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                                     
+                                                   } 
+                                                 
+                                             }
+                                                 
+                                                 
+                                           }
+                                         }
                                      }else {
                                          JOptionPane.showMessageDialog(null, "Inexistente", "Error", JOptionPane.ERROR_MESSAGE);
                                          rep = JOptionPane.YES_OPTION;
                                      }
+                                     
                                     otram=JOptionPane.showOptionDialog(null, "¿Desea ingresar otra materia?", "Materia", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                  }while(otram==JOptionPane.YES_OPTION);
                                     rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra captura?", "PROFESOR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-
-                                }while (rep == JOptionPane.YES_OPTION) ;
+                                }while (rep == JOptionPane.YES_OPTION) ;   
                         } else if (subm == 3) {
                                                do {
                                 grupo = Integer.parseInt(JOptionPane.showInputDialog("De que grupo eres?\n\n\n\n"+"11191\n\n\n\n"+"O\n\n\n\n"+"21191\n\n\n"));
