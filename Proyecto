@@ -19,17 +19,17 @@ public class proyectoProgra extends JFrame
         armando.setVisible(true);
         armando.getContentPane().setBackground(Color.black);
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-
         int menu=0, subm=0;                //Menú y submenús (en ese orden)
         int x=1, cor=0, grupo=0;                       //Variable ubicación y clave
         int A=0;                         //Variable de número para los alumnos
-        int y=1;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
+        int y=1, nomas1=0, nomas2=0;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
         int rep=0;                        //Repeticiones
-        int contmat;
+        int activo[]=new int[31];
         int grupo11191=0, grupo21191=0;
         String clave="";              //Detalle extra (Lo puedes quitar si quieres)
         int otram=0;                //por si el profesor impartira otra materia
         int ngrupo1[]=new int[3];
+        int contmat=0;
         int ngrupo2[]=new int[3];
         int[] actp=new int[20];         //Activación profesores
         String[] clavp=new String[20];  //Clave profesores
@@ -47,6 +47,7 @@ public class proyectoProgra extends JFrame
         float[] califb=new float[94];  //Segunda calificación
         float[] califc=new float[94];  //Tercera calificación
         float[] prom=new float[94];    //Promedio
+        int xnum=0;
         String bus="";
         do {
                 try{
@@ -150,12 +151,48 @@ public class proyectoProgra extends JFrame
                 } else if (menu == 2) {
                     do {
                         subm = Integer.parseInt(JOptionPane.showInputDialog("1-Consultar profesores\n" + "2-Consultar alumnos\n" + "3-Consultar calificaciones\n" + "4-Regresar"));
-                        if (subm == 1) {
+                        if (subm == 1) { //la profesora dijo que este menu o sub menu lo omitieramos por que no tenia sentido consultar a los profesores
 
-                        } else if (subm == 2) {
-
+                                                   } else if (subm == 2) {
+                            grupo=Integer.parseInt(JOptionPane.showInputDialog("de que grupo eres?\n\n\n"));
+                            if(grupo==11191) {
+                                xnum = Integer.parseInt(JOptionPane.showInputDialog("Que registro quiere consultar?\n\n"));
+                                for (y = 1; y <= 30; y++) {
+                                    if ((xnum == numa[y]) && (activo[y] != 0)) {
+                                        JOptionPane.showMessageDialog(null, "Numero contable: " + numa[y] + "\n\n\nNombre: " + noma[y]
+                                                + "\n\n\nsus calificaciones fueron\n\n\n" + "primer parcial: " + califa[y] + "\n\n\nsegundo parcial: " + califb[y] + "\n\n\ntercer parcial: " + califc[y]
+                                                + "\n\n\nSu promedio es de: "+prom[y]+"\n\n\nde la materia de: " + mat[y],"Grupo 11191",JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }
+                            } else if(grupo==21191) {
+                                for (y = 1; y <= 30; y++) {
+                                    if ((xnum == numa[y]) && (activo[y] != 0)) {
+                                        JOptionPane.showMessageDialog(null, "Numero contable: " + numa[y] + "\n\n\nNombre: " + noma[y]
+                                                + "\n\n\nsus calificaciones fueron\n\n\n" + "primer parcial: " + califa[y] + "\n\n\nsegundo parcial: " + califb[y] + "\n\n\ntercer parcial: " + califc[y]
+                                                + "\n\n\nSu promedio es de: "+prom[y]+"\n\n\nde la materia de: " + mat[y], "Grupo 21191", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }
+                            }
                         } else if (subm == 3) {
+                                grupo = Integer.parseInt(JOptionPane.showInputDialog("De que grupo quieres consultar?\n\n\n"+"11191\n\n\n"+"O"+"\n\n\n21191"));
+                                if (grupo == 11191) {
+                                    for (y = 1; y <= 30; y++) {
+                                        if ((numa[y] != 0) && (activo[y] != 1)) {
+                                            JOptionPane.showMessageDialog(null, "Numero contable: " + numa[y] + "\n\n\nNombre: " + noma[y]
+                                                    + "\n\n\nsus calificaciones fueron\n\n\n" + "primer parcial: " + califa[y] + "\n\n\nsegundo parcial: " + califb[y] + "\n\n\ntercer parcial: " + califc[y]
+                                                    + "\n\n\nSu promedio es de: "+prom[y]+"\n\n\nde la materia de: " + mat[y], "Grupo 11191", JOptionPane.INFORMATION_MESSAGE);
+                                        }
+                                    }
 
+                            }else if(grupo==21191) {
+                                for (y = 1; y <= 30; y++) {
+                                    if ((numa[y] != 0) && (activo[y] != 1)) {
+                                        JOptionPane.showMessageDialog(null, "Numero contable: " + numa[y] + "\n\n\nNombre: " + noma[y]
+                                                + "\n\n\nsus calificaciones fueron\n\n\n" + "primer parcial: " + califa[y] + "\n\n\nsegundo parcial: " + califb[y] + "\n\n\ntercer parcial: " + califc[y]
+                                                + "\n\n\nde la materia de: " + mat[y], "Grupo 21191", JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                                }
+                            }
                         } else if (subm == 4) {
 
                         } else {
