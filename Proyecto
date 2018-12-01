@@ -49,6 +49,12 @@ public class proyectoProgra extends JFrame
         float[] prom=new float[94];    //Promedio
         int xnum=0;
         String bus="";
+        
+        
+         //clave = JOptionPane.showInputDialog("Ingrese clave de cambio");
+           //                 clave = clave.toLowerCase();
+             //               if (clave.equals("contraseña")) {
+               //                 do {
         do {
                 try{
                 menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
@@ -56,10 +62,7 @@ public class proyectoProgra extends JFrame
                     do {
                         subm = Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n" + "2-Asignar materia\n" + "3-Capturar alumno\n" + "4-Capturar calificaciones\n" + "5-Regresar"));
                         if (subm == 1) {
-                            clave = JOptionPane.showInputDialog("Ingrese clave de cambio");
-                            clave = clave.toLowerCase();
-                            if (clave.equals("contraseña")) {
-                                do {
+                           
                                     nump[x] = x;
                                     nomp[x] = JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
                                     nomp[x] = nomp[x].toUpperCase();
@@ -72,11 +75,9 @@ public class proyectoProgra extends JFrame
                                     actp[x]=1;
                                     rep=JOptionPane.showOptionDialog(null,"¿Desea hacer otra captura?","PROFESOR",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,null,null);
                                 } while (rep==JOptionPane.YES_OPTION);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Disculpe, no le puedo permitir el acceso.", "ERROR", JOptionPane.ERROR_MESSAGE);
-                            }
+                            
                         } else if (subm == 2) {
-                            nump[x] = x;
+                           
                             do {
                                 bus = JOptionPane.showInputDialog("Ingrese la clave de profesor");
                                 for (x = 1; x < 19; x++) {
@@ -215,7 +216,6 @@ public class proyectoProgra extends JFrame
                 } else if (menu == 4) {
 
                 } else if (menu == 5) {
-                    break;
                 } else {
 
                 }
@@ -225,6 +225,9 @@ public class proyectoProgra extends JFrame
             } while (menu != 5) ;
         if(menu==5){JOptionPane.showMessageDialog(null,"TENGA UN BUEN DIA, ADIOS","Adios",JOptionPane.INFORMATION_MESSAGE);}
         if(menu==5){armando.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); System.exit(0);}
+       // } else {
+         //  JOptionPane.showMessageDialog(null, "Disculpe, no le puedo permitir el acceso.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        //}
 
 
     }
