@@ -26,6 +26,7 @@ public class proyectoProgra extends JFrame
         int rep=0;                        //Repeticiones
         int activo[]=new int[31];
         int grupo11191=0, grupo21191=0;
+        int asigmat;                         //Asignar materia
         String clave="";              //Detalle extra (Lo puedes quitar si quieres)
         int otram=0;                //por si el profesor impartira otra materia
         int ngrupo1[]=new int[3];
