@@ -57,7 +57,7 @@ public class proyectoProgra extends JFrame
                //                 do {
         do {
                 try{
-                menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n CAPTURAS\n CONSULTAS\n CANCELACIONES\n CAMBIOS\n SALIR"));
+                menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n 1-CAPTURAS\n 2-CONSULTAS\n 3-CANCELACIONES\n 4-CAMBIOS\n 5-SALIR"));
                 if (menu == 1) {
                    do{
                        subm = Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n" + "2-Asignar materia\n" + "3-Capturar alumno/calificaciones\n" + "4-Regresar"));
@@ -235,7 +235,21 @@ public class proyectoProgra extends JFrame
                         }
                     } while (subm != 4);
                 } else if (menu == 2) {
-                 
+                  subm = Integer.parseInt(JOptionPane.showInputDialog("1- Consultar alumno\n 2-Consultar clase\n 3-Salir"));
+                    
+                    if(subm==1){
+                      A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
+                      for(x=0;x<94;x++){
+                        if((A==numa[x])&&(acta[x]==1)){
+                           JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
+                        }
+                    }else if(subm==2){
+                      
+                    }else if(subm==3){
+                      
+                    }else{
+                      
+                    }
                   
                   
                 } else if (menu == 3) {
