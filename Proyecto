@@ -73,6 +73,7 @@ public class proyectoProgra extends JFrame
                                     clavp[x]=nump[x] + apelpp[x].substring(0, 2) + apelmp[x].charAt(0) + nomp[x].charAt(0);
                                     JOptionPane.showMessageDialog(null, "La clave de maestro es:\n"+clavp[x], "CLAVE", JOptionPane.PLAIN_MESSAGE);
                                     rep=JOptionPane.showOptionDialog(null,"¿Desea hacer otra captura?","PROFESOR",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,null,null);
+                                    x=x+1;
                                 } while (rep==JOptionPane.YES_OPTION);
                             
                         } else if (subm == 2) {
@@ -242,6 +243,7 @@ public class proyectoProgra extends JFrame
                       for(x=0;x<94;x++){
                         if((A==numa[x])&&(acta[x]==1)){
                            JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
+                         }
                         }
                     }else if(subm==2){
                       
