@@ -22,8 +22,10 @@ public class proyectoProgra extends JFrame
         int x = 1, cor = 0, grupo = 0, exi = 0;                       //Variable ubicación y clave
         int A = 0;                         //Variable de número para los alumnos
         int y = 1, nomas1 = 0, nomas2 = 0;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
+        int var=0;
         int rep = 0;                        //Repeticiones
         int grupo11191 = 0, grupo21191 = 0;
+        float promst=0, promt=0;
         int asigmat;                         //Asignar materia
         String clave = "";              //Detalle extra (Lo puedes quitar si quieres)
         int otram = 0;                //por si el profesor impartira otra materia
@@ -45,7 +47,8 @@ public class proyectoProgra extends JFrame
         float[] califa = new float[94];  //Primera calificación
         float[] califb = new float[94];  //Segunda calificación
         float[] califc = new float[94];  //Tercera calificación
-        float[] prom = new float[94];    //Promedio
+        float[] prom1 = new float[94];    //Promedio clase 1
+        float[] prom2=new float[94];      //Promedio clase 2
         int[] matal = new int[23];
         int xnum = 0, mata = 0;
         String bus = "";
@@ -258,7 +261,7 @@ public class proyectoProgra extends JFrame
                                             }
                                         }
 
-                                        prom[x] = (califa[x] + califb[x] + califc[x]) / 3;
+                                        prom1[x] = (califa[x] + califb[x] + califc[x]) / 3;
                                         JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + "tus calificaciones fueron:" + califa[x] + "\n\ne" + califb[x] + "\n\n" + califc[x], "11191", JOptionPane.INFORMATION_MESSAGE);
                                     }
                                 }
@@ -280,6 +283,7 @@ public class proyectoProgra extends JFrame
                                             } while (califa[x] > 10);
                                             if (matal[6] != 1) {
                                                 matal[6] = 1;
+                                            }
                                             }
                                             if (mata == 2) {
                                                 do {
@@ -329,38 +333,61 @@ public class proyectoProgra extends JFrame
                                                 } while (califa[x] > 10);
                                                 do {
                                                     califb[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califa[x] > 10);
+                                                } while (califb[x] > 10);
                                                 do {
                                                     califc[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califa[x] > 10);
+                                                } while (califb[x] > 10);
                                                 if (matal[10] != 1) {
                                                     matal[10] = 1;
                                                 }
                                             }
-                                            prom[x] = (califa[x] + califb[x] + califc[x]) / 3;
-                                            JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom[x], "Alumno", JOptionPane.INFORMATION_MESSAGE);
+                                            prom2[x] = (califa[x] + califb[x] + califc[x]) / 3;
+                                            JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom2[x], "Alumno", JOptionPane.INFORMATION_MESSAGE);
                                         }
                                         acta[x] = 1;
                                         x = x + 1;
                                         rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra captura?", "21191", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                     }
-                                }
+                                
                             } while (rep == JOptionPane.YES_OPTION);
                         } else if (subm == 3) {
                         }
-                    } while (subm != 3);
+                    } while (subm != 4);
                 } else if (menu == 2) {
                     subm = Integer.parseInt(JOptionPane.showInputDialog("1- Consultar alumno\n 2-Consultar clase\n 3-Salir"));
 
                     if (subm == 1) {
+                        var=Integer.parseInt(JOptionPane.showInputDialog("Ingrese clase del alumno.\n\n\n 1- 11191\n\n 2-21191"));
+                      if(var==1){
                         A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
                         for (x = 0; x < 94; x++) {
                             if ((A == numa[x]) && (acta[x] == 1)) {
-                                JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom1[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
                             }
                         }
+                      }else if (var==2){
+                        A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
+                        for (x = 0; x < 94; x++) {
+                            if ((A == numa[x]) && (acta[x] == 1)) {
+                                JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom2[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
+                            }
+                        }
+                      }else{
+                      
+                      }
                     } else if (subm == 2) {
-
+                      A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese clase a evaluar."));
+                      if(A==1){
+                        for(x=1;x<=prom1.length;x++){
+                          promst=promst+prom1[x];
+                        }
+                      }else if(A==2){
+                        promst=promst+prom1[x];
+                      }else{
+                      
+                      }
+                      promt=promst/3;
+                      JOptionPane.showMessageDialog(null,"El promedio de la clase es: \n\n\n\n"+promt, "Alumno", JOptionPane.PLAIN_MESSAGE);
                     } else if (subm == 3) {
 
                     } else {
@@ -372,7 +399,7 @@ public class proyectoProgra extends JFrame
                     do {
                         subm = Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Baja temporal\n 3-Salir"));
                         if (subm == 1) {
-                            xnum = Integer.parseInt(JOptionPane.showInputDialog("Ingrese número del alumno a suspender."));
+                            xnum = Integer.parseInt(JOptionPane.showInputDialog("Ingrese número del alumno a dra de baja."));
                             for (x = 1; x <= 30; x++) {
                                 if ((xnum == numa[x]) && (acta[x] != 0)) {
                                     acta[x] = 0;
@@ -381,15 +408,16 @@ public class proyectoProgra extends JFrame
                                     califa[x] = 0;
                                     califb[x] = 0;
                                     califc[x] = 0;
-                                    prom[x] = 0;
+                                    prom1[x] = 0;
+                                    prom2[x]=0;
                                     exi = 1;
                                 }
                             }
-                            /*if(exi==1){
-                                JOptionPane.showMessageDialog(null, numa[x] + "Se dió de baja al alumno con éxito.", JOptionPane.INFORMATION_MESSAGE);
+                            if(exi==1){
+                                JOptionPane.showMessageDialog(null,"Se dió de baja al alumno con éxito.","BAJA", JOptionPane.INFORMATION_MESSAGE);
                             }else{
-                                JOptionPane.showMessageDialog(null, numa[x] + "No se encuentra el alumno.", JOptionPane.INFORMATION_MESSAGE);
-                            }*/
+                                JOptionPane.showMessageDialog(null,"No se encuentra el alumno.","ERROR", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         } else if (subm == 2) {
                             xnum = Integer.parseInt(JOptionPane.showInputDialog("Ingrese número del alumno a suspender."));
                             for (x = 1; x <= 30; x++) {
@@ -398,11 +426,11 @@ public class proyectoProgra extends JFrame
                                     exi = 1;
                                 }
                             }
-                            /*if(exi==1){
-                                JOptionPane.showMessageDialog(null, numa[x] + "Suspención establecida.", JOptionPane.INFORMATION_MESSAGE);
+                            if(exi==1){
+                                JOptionPane.showMessageDialog(null,"Suspención establecida.","SUSPENCION", JOptionPane.INFORMATION_MESSAGE);
                             }else{
-                                JOptionPane.showMessageDialog(null, numa[x] + "No se encuentra el alumno.", JOptionPane.INFORMATION_MESSAGE);
-                            }*/
+                                JOptionPane.showMessageDialog(null,"No se encuentra el alumno.","ERROR", JOptionPane.INFORMATION_MESSAGE);
+                            }
                         } else if (subm == 3) {
                         }
                     } while (subm != 3);
@@ -413,7 +441,8 @@ public class proyectoProgra extends JFrame
                             califa[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
                             califb[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
                             califc[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                            prom[x] = (califa[x] + califb[x] + califc[x]) / 3;
+                            prom1[x] = (califa[x] + califb[x] + califc[x]) / 3;
+                            prom2[x]=(califa[x] + califb[x] + califc[x]) / 3;
                         }
                     }
                 } else if (menu == 5) {
@@ -426,5 +455,5 @@ public class proyectoProgra extends JFrame
             }
                 }while (menu != 5);
             } 
-        }  
-    
+        }
+  
