@@ -20,32 +20,42 @@ public class proyectoProgra extends JFrame
         int x = 1, cor = 0, grupo = 0, exi = 0;                       //Variable ubicación y clave
         int A;                         //Variable de número para los alumnos
         int y = 1;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
-        int var=0;
-        int rep = 0;                        //Repeticiones
+        int var=0, ca=0, cb=0;;
+        int rep = 0;                      //Repeticiones
         int p=1;
         int grupo11191 = 0, grupo21191 = 0;
-        float promst=0, promt=0;
-        int asigmat;                         //Asignar materia
-        int bully=0;
-        int otram = 0;                //por si el profesor impartira otra materia
+        float promst=0, promt=0, pro=0;
+        int asigmat;                      //Asignar materia
+        int bully=0;                      //Activación acciones alumnos, Pregunta materia
+        int otram = 0;                    //por si el profesor impartira otra materia
         String[] clavp = new String[20];  //Clave profesores
-        double matcod[] = new double[11];
-        int[] acta = new int[94];          //Activación alumnos
-        String[] nomp = new String[20];  //Nombre profesor
-        String[] apelpp = new String[20];//Apellido paterno profesor
-        String[] apelmp = new String[20];//Apellido materno profesor
-        String[] noma = new String[94];  //Nombre alumno
-        int[] mat = new int[14];   //Numero de materia
-        int[] ngrupo = new int[94];      //numero de grupo, trabajemos el 11191, 21191
-        int[] nump = new int[20];        //Número profesror
-        int[] numa = new int[31];        //Número alumno
-        float[] califa = new float[94];  //Primera calificación
-        float[] califb = new float[94];  //Segunda calificación
-        float[] califc = new float[94];  //Tercera calificación
-        float[] prom1 = new float[94];    //Promedio clase 1
-        float[] prom2=new float[94];      //Promedio clase 2
+        double matcod[] = new double[11]; //Códigos materias
+        int[] acta = new int[63];         //Activación alumnos
+        String[] nomp = new String[20];   //Nombre profesor
+        String[] apelpp = new String[20]; //Apellido paterno profesor
+        String[] apelmp = new String[20]; //Apellido materno profesor
+        String[] noma = new String[94];   //Nombre alumno
+        int[] mat=new int[14];            //Numero de materia
+        int[] ngrupo=new int[93];         //numero de grupo, trabajemos el 11191, 21191
+        int[] nump=new int[20];           //Número profesror
+        int[] numa=new int[63];           //Número alumno
+        int[] almmat=new int[63];          //
+        float califa=0;                     //Primera calificación
+        float califb=0;                     //Segunda calificación
+        float califc=0;                     //Tercera calificación
+        float[] prom=new float [63];      //Promedio general de los alumnos
+        float[] prom1=new float[31];      //Promedio materia 1
+        float[] prom2=new float[31];      //Promedio materia 2
+        float[] prom3=new float[31];      //Promedio materia 3
+        float[] prom4=new float[31];      //Promedio materia 4
+        float[] prom5=new float[31];      //Promedio materia 5
+        float[] prom6=new float[31];      //Promedio materia 6
+        float[] prom7=new float[31];      //Promedio materia 7
+        float[] prom8=new float[31];      //Promedio materia 8
+        float[] prom9=new float[31];      //Promedio materia 9
+        float[] prom10=new float[31];      //Promedio materia 10
         int[] matal = new int[23];
-        int xnum = 0, mata = 0;
+        int xnum = 0, m;
         String bus = "";
         int masto=0;    //double random;
         do {
@@ -53,11 +63,10 @@ public class proyectoProgra extends JFrame
                 menu = Integer.parseInt(JOptionPane.showInputDialog("BIENVENIDO, QUE DESEA REALIZAR?\n 1-CAPTURAS\n 2-CONSULTAS\n 3-CANCELACIONES\n 4-CAMBIOS\n 5-SALIR"));
                 if (menu == 1) {
                     do {
-                        subm = Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n" + "2-Asignar materia\n" + "3-Capturar alumno/calificaciones\n" + "4-Regresar"));
+                        subm = Integer.parseInt(JOptionPane.showInputDialog("1-Capturar profesor\n" + "2-Asignar materia\n" + "3-Capturar alumno/materias\n 4-Regresar"));
                         if (subm == 1) {
                             masto=1;
                             do {
-                               // random=Math.floor(Math.random()*20);
                                 nump[p] = p;
                                 nomp[p] = JOptionPane.showInputDialog("Ingrese nombre(s) del profesor.");
                                 nomp[p] = nomp[p].toUpperCase();
@@ -84,6 +93,7 @@ public class proyectoProgra extends JFrame
                                             grupo = Integer.parseInt(JOptionPane.showInputDialog("A que grupo impartira la materia?\n\n" + "1.-11191\n\n\n" + "2.-21191"));
                                             if (grupo11191 != 1) {
                                                 if (grupo == 1) {
+                                                   ca=1;
                                                     asigmat = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n\n\n\n" + "1.-Fundamentos de Programacion\n\n\n" + "2.-Matematicas para la computacion\n\n\n\n" + "3.-Temas selectos de algebra\n\n\n" + "4.-Introduccion a la ingenieria\n\n\n\n" + "5.-Algebra lineal\n\n\n"));
                                                     grupo11191 = 1;
                                                     if (asigmat == 1) {
@@ -131,7 +141,7 @@ public class proyectoProgra extends JFrame
                                             } else if (grupo21191 != 1) {
                                                 if (grupo == 2) {
                                                     grupo21191 = 1;
-
+                                                    cb=1;
                                                     asigmat = Integer.parseInt(JOptionPane.showInputDialog("Que materia impartira?\n\n\n\n\n" + "1.-Estrategias de aprendizaje\n\n\n" + "2.-Metodologia de la investigacion\n\n\n" + "3.-Programacion Orientada a Objetos\n\n\n" + "4.-Fisica 1\n\n\n" + "5.-Organizacion de datos\n\n\n"));
 
                                                     if (asigmat == 1) {
@@ -187,247 +197,196 @@ public class proyectoProgra extends JFrame
                                     rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra captura?", "PROFESOR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                 } while (rep == JOptionPane.YES_OPTION);
                             }else {
-                                JOptionPane.showMessageDialog(null, "Ingres un profesor", "Error", JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Ingrees un profesor", "Error", JOptionPane.ERROR_MESSAGE);
                             }
                         } else if (subm == 3) {
                             if(masto==1) {
                                 bully = 1;
                                 do {
+                                    numa[y] = Integer.parseInt(JOptionPane.showInputDialog("Cual es tu numero contable?\n\n\n"));
+                                    noma[y] = JOptionPane.showInputDialog("Cual es tu nombre?\n\n\n");
+                                      noma[y] = noma[y].toUpperCase();
                                     grupo = Integer.parseInt(JOptionPane.showInputDialog("De que grupo eres?\n\n\n\n" + "1-11191\n\n" + "2-21191\n\n"));
-                                    if ((grupo != 1) && (grupo != 2)) {
-                                        JOptionPane.showMessageDialog(null, "No existe ese grupo", "error", JOptionPane.ERROR_MESSAGE);
+                                    acta[y] = 1;
+                                    if((grupo==1)&&(ca==1)){
+                                      do{
+                                        ngrupo[y]=11191;
+                                        m=Integer.parseInt(JOptionPane.showInputDialog("ingrese materia\n\n" + "1.-Estrategias de aprendizaje\n" + "2.-Metodologia de la investigacion\n" + "3.-Programacion Orientada a Objetos\n" + "4.-Fisica 1\n" + "5.-Organizacion de datos"));
+                                         if((m==1)&&(mat[1]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom1[y]=(califa+califb+califc)/3;
+                                           pro=prom1[y];
+                                         }else if((m==2)&&(mat[2]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom2[y]=(califa+califb+califc)/3;
+                                           pro=prom2[y];
+                                         }else if((m==3)&&(mat[3]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom3[y]=(califa+califb+califc)/3;
+                                           pro=prom3[y];
+                                         }else if((m==4)&&(mat[4]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom4[y]=(califa+califb+califc)/3;
+                                           pro=prom4[y];
+                                         }else if((m==5)&&(mat[5]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom5[y]=(califa+califb+califc)/3;
+                                           pro=prom5[y];
+                                         }else{
+                                           JOptionPane.showMessageDialog(null, "Materia inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                                         }
+                                       rep = JOptionPane.showOptionDialog(null, "¿Desea ingresar otra materia?", "CLASE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                                      }while(rep==JOptionPane.YES_OPTION);
+                                    }else if((grupo==2)&&(cb==1)){
+                                      do{
+                                        ngrupo[y]=21191;
+                                        m=Integer.parseInt(JOptionPane.showInputDialog("ingrese materia\n\n" + "1.-Fundamentos de Programacion\n" + "2.-Matematicas para la computacion\n" + "3.-Temas selectos de algebra\n" + "4.-Introduccion a la ingenieria\n" + "5.-Algebra lineal"));
+                                         if((m==1)&&(mat[6]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom6[y]=(califa+califb+califc)/3;
+                                           pro=prom6[y];
+                                         }else if((m==2)&&(mat[7]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom7[y]=(califa+califb+califc)/3;
+                                           pro=prom7[y];
+                                         }else if((m==3)&&(mat[8]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom8[y]=(califa+califb+califc)/3;
+                                           pro=prom8[y];
+                                         }else if((m==4)&&(mat[9]==1)){
+                                           do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom9[y]=(califa+califb+califc)/3;
+                                           pro=prom9[y];
+                                         }else if((m==5)&&(mat[10]==1)){
+                                         do{
+                                             califa=Float.parseFloat(JOptionPane.showInputDialog("Ingrese primera calificación"));
+                                           }while(califa>10);
+                                           do{
+                                             califb=Float.parseFloat(JOptionPane.showInputDialog("Ingrese segunda calificación"));
+                                           }while(califb>10);
+                                           do{
+                                             califc=Float.parseFloat(JOptionPane.showInputDialog("Ingrese tercera calificación"));
+                                           }while(califc>10);
+                                           prom10[y]=(califa+califb+califc)/3;
+                                           pro=prom10[y];
+                                         }else{
+                                           JOptionPane.showMessageDialog(null, "Materia inexistente", "Error", JOptionPane.ERROR_MESSAGE);
+                                         }
+                                      JOptionPane.showMessageDialog(null, "Código materia: "+matcod[m]+"\n\nCalificaciones:\n"+califa+califb+califc+"\nPromedio: "+pro, "Error", JOptionPane.PLAIN_MESSAGE);
+                                       rep = JOptionPane.showOptionDialog(null, "¿Desea ingresar otra materia?", "CLASE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                                      }while(rep==JOptionPane.YES_OPTION);
+                                    }else{
+                                      JOptionPane.showMessageDialog(null, "Clase inexistente", "Error", JOptionPane.ERROR_MESSAGE);
                                     }
-                                    mata = 0;
-                                    if (grupo == 1) {
-                                        ngrupo[y] = 11191;
-                                        numa[y] = Integer.parseInt(JOptionPane.showInputDialog("Cual es tu numero contable?\n\n\n"));
-                                        noma[y] = JOptionPane.showInputDialog("Cual es tu nombre?\n\n\n");
-                                        noma[y] = noma[y].toUpperCase();
-                                        mata = Integer.parseInt(JOptionPane.showInputDialog("ingrese materia\n\n\n" + "1.-Estrategias de aprendizaje\n\n\n" + "2.-Metodologia de la investigacion\n\n\n" + "3.-Programacion Orientada a Objetos\n\n\n" + "4.-Fisica 1\n\n\n" + "5.-Organizacion de datos\n\n\n"));
-                                        if (mata <= 5) {
-
-                                            if ((mata == 1) && (mat[1] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[1] != 1) {
-                                                    matal[1] = 1;
-                                                }
-                                            }
-                                            if ((mata == 2) && (mat[2] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[2] != 1) {
-                                                    matal[2] = 1;
-                                                }
-                                            }
-                                            if ((mata == 3) && (mat[3] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[3] != 1) {
-                                                    matal[3] = 1;
-                                                }
-                                            }
-                                            if ((mata == 4) && (mat[4] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[4] != 1) {
-                                                    matal[4] = 1;
-                                                }
-                                            }
-                                            if ((mata == 5) && (mat[5] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[5] != 1) {
-                                                    matal[5] = 1;
-                                                }
-                                            }
-
-                                            prom1[y] = (califa[y] + califb[y] + califc[y]) / 3;
-                                            JOptionPane.showMessageDialog(null, numa[y] + "\n\n\n\n\n" + noma[y] + "\n De la materia: " + "tus calificaciones fueron:" + califa[y] + "\n\nen el segundo: " + califb[y] + "\n\nen el tercero: " + califc[y], "11191", JOptionPane.INFORMATION_MESSAGE);
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "Inexistente", "Error", JOptionPane.ERROR_MESSAGE);
-                                        }
-                                    }
-                                    if (grupo == 2) {
-                                        ngrupo[y] = 21191;
-                                        numa[y] = Integer.parseInt(JOptionPane.showInputDialog("Cual es tu numero contable?\n\n\n"));
-                                        noma[y] = JOptionPane.showInputDialog("Cual es tu nombre?\n\n\n");
-                                        noma[y] = noma[y].toUpperCase();
-                                        mata = Integer.parseInt(JOptionPane.showInputDialog("ingrese materia\n\n\n\n\n\n" + "1.-Fundamentos de Programacion\n\n\n" + "2.-Matematicas para la computacion\n\n\n\n" + "3.-Temas selectos de algebra\n\n\n" + "4.-Introduccion a la ingenieria\n\n\n\n" + "5.-Algebra lineal\n\n\n"));
-                                        if (mata != 0) {
-                                            if ((mata == 1) && (mat[6] == 1)) {
-
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[6] != 1) {
-                                                    matal[6] = 1;
-                                                }
-                                            }
-                                            if ((mata == 2) && (mat[7] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[7] != 1) {
-                                                    matal[7] = 1;
-                                                }
-                                            }
-                                            if ((mata == 3) && (mat[8] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[8] != 1) {
-                                                    matal[8] = 1;
-                                                }
-                                            }
-                                            if ((mata == 4) && (mat[9] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[9] != 1) {
-                                                    matal[9] = 1;
-                                                }
-                                            }
-                                            if ((mata == 5) && (mat[10] == 1)) {
-                                                do {
-                                                    califa[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                                                } while (califa[y] > 10);
-                                                do {
-                                                    califb[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                                                } while (califb[y] > 10);
-                                                do {
-                                                    califc[y] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                                                } while (califc[y] > 10);
-                                                if (matal[10] != 1) {
-                                                    matal[10] = 1;
-                                                }
-                                            }
-                                            prom2[y] = (califa[y] + califb[y] + califc[y]) / 3;
-                                            JOptionPane.showMessageDialog(null, numa[y] + "\n\n\n\n\n" + noma[y] + "\n De la materia: " + "tus calificaciones fueron:" + califa[y] + "\n\nen el segundo: " + califb[y] + "\n\nen el tercero: " + califc[y], "11191", JOptionPane.INFORMATION_MESSAGE);
-                                        } else {
-                                            JOptionPane.showMessageDialog(null, "Inexistente", "Error", JOptionPane.ERROR_MESSAGE);
-                                        }
-                                        acta[y] = 1;
                                         y = y + 1;
-                                        rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra captura?", "21191", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-                                    }
-
+                                   rep = JOptionPane.showOptionDialog(null, "¿Desea capturar a otro alumno?", "ALUMNO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                 } while (rep == JOptionPane.YES_OPTION);
                             }else{
                                 JOptionPane.showMessageDialog(null, "Ingrese un maestro", "Error", JOptionPane.ERROR_MESSAGE);
                             }
-                        } else if (subm == 3) {
+                        }else if (subm == 4){
+
+                        }else{
+                          
                         }
                     } while (subm != 4);
                 } else if (menu == 2) {
                     if(bully==1) {
-                        subm = Integer.parseInt(JOptionPane.showInputDialog("1- Consultar alumno\n 2-Consultar clase\n 3-Salir"));
-
+                      do{
+                        subm = Integer.parseInt(JOptionPane.showInputDialog("1- Consultar alumno\n 2-Consultar clase\n 3-Regresar"));
                         if (subm == 1) {
-                            var = Integer.parseInt(JOptionPane.showInputDialog("Ingrese clase del alumno.\n\n\n 1- 11191\n\n 2-21191"));
-                            if (var == 1) {
-                                A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
+                            A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
                                 for (x = 0; x < 94; x++) {
-                                    if ((A == numa[x]) && (acta[x] == 1)) {
-                                        JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom1[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
+                                    if((A == numa[x]) && (acta[x] == 1)&&(ngrupo[x]==11191)){
+                                      JOptionPane.showMessageDialog(null,numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom1[x]+","+prom2[x]+","+prom3[x]+","+prom4[x]+","+prom5[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
+                                    }else if((A == numa[x]) && (acta[x] == 1)&&(ngrupo[x]==21191)){
+                                      JOptionPane.showMessageDialog(null,numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom6[x]+","+prom7[x]+","+prom8[x]+","+prom9[x]+","+prom10[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
                                     }
                                 }
-                            } else if (var == 2) {
-                                A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
-                                for (x = 0; x < 94; x++) {
-                                    if ((A == numa[x]) && (acta[x] == 1)) {
-                                        JOptionPane.showMessageDialog(null, numa[x] + "\n\n\n\n\n" + noma[x] + "\n\n\n\n De la materia: " + mat[x] + "\n\n\n\n\ntu promedio es: " + prom2[x], "Alumno", JOptionPane.PLAIN_MESSAGE);
-                                    }
-                                }
-                            } else {
-
-                            }
                         } else if (subm == 2) {
-                            A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese clase a evaluar.\n\n\n 1-11191\n\n 2-21191"));
-                            if (A == 1) {
-                                for (x = 1; x <= prom1.length; x++) {
-                                    promst = promst + prom1[x];
-                                }
-                            } else if (A == 2) {
-                                promst = promst + prom1[x];
-                            } else {
 
-                            }
-                            promt = promst / 3;
-                            JOptionPane.showMessageDialog(null, "El promedio de la clase es: \n\n\n\n" + promt, "Alumno", JOptionPane.PLAIN_MESSAGE);
-                        } else if (subm == 3) {
-
+                        }else if(subm==3){
+                        }else{
                         }
+                        rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra consulta?", "ALUMNO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+                      }while(rep==JOptionPane.YES_OPTION);  
                     }else {
                         JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
                     }
-
-
-
-
                 } else if (menu == 3) {
                     if (bully == 1) {
-
-
                     do {
                         subm = Integer.parseInt(JOptionPane.showInputDialog("1- Baja permanente\n 2-Suspención\n 3-Reinstalación\n 4-Salir"));
                         if (subm == 1) {
@@ -437,11 +396,16 @@ public class proyectoProgra extends JFrame
                                     acta[x] = 0;
                                     noma[x] = "null";
                                     numa[x] = 0;
-                                    califa[x] = 0;
-                                    califb[x] = 0;
-                                    califc[x] = 0;
                                     prom1[x] = 0;
                                     prom2[x] = 0;
+                                    prom3[x] = 0;
+                                    prom4[x] = 0;
+                                    prom5[x] = 0;
+                                    prom6[x] = 0;
+                                    prom7[x] = 0;
+                                    prom8[x] = 0;
+                                    prom9[x] = 0;
+                                    prom10[x] = 0;
                                     exi = 1;
                                 }
                             }
@@ -489,11 +453,7 @@ public class proyectoProgra extends JFrame
                     xnum = Integer.parseInt(JOptionPane.showInputDialog("¿De que alumno va a cambiar calificaciones?\n\n Ingrese su número"));
                     for (x = 1; x <= 30; x++) {
                         if ((xnum == numa[x]) && (acta[x] != 0)) {
-                            califa[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu primer calificacion?\n\n\n"));
-                            califb[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu segunda calificacion?\n\n\n"));
-                            califc[x] = Float.parseFloat(JOptionPane.showInputDialog("Cual fue tu tercer calificacion?\n\n\n"));
-                            prom1[x] = (califa[x] + califb[x] + califc[x]) / 3;
-                            prom2[x]=(califa[x] + califb[x] + califc[x]) / 3;
+                          
                         }
                     }
                 }else{
@@ -510,5 +470,4 @@ public class proyectoProgra extends JFrame
             }
         }while (menu != 5);
     }
-}
-  
+} 
