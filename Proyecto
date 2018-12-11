@@ -1,8 +1,8 @@
 import java.io.*;
-import javax.swing.*;
-import java.awt.Color;
-import java.util.Random;
-import java.util.regex.Matcher;
+        import javax.swing.*;
+        import java.awt.Color;
+        import java.util.Random;
+        import java.util.regex.Matcher;
 
 public class proyectoProgra extends JFrame
 {
@@ -374,6 +374,11 @@ public class proyectoProgra extends JFrame
                                     }else if((A == numa[x]) && (acta[x] == 1)&&(ngrupo[x]==21191)){
                                         JOptionPane.showMessageDialog(null,"Grupo"+ngrupo[x]+"\n\n"+numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom6[x]+","+prom7[x]+","+prom8[x]+","+prom9[x]+","+prom10[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
                                     }
+                                    if((numa[x]!=A)&&(acta[x]==0)&&(ngrupo[x]==11191)){
+                                        JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
+                                    } else if((numa[x]!=A)&&(acta[x]==0)&&(ngrupo[x]==21191)){
+                                        JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
+                                    }
                                 }
                             } else if (subm == 2) {
                                 B=Integer.parseInt(JOptionPane.showInputDialog("por favor ingrese su grupo\n\n"+"1.-11191\n\n"+"2.-21191"));
@@ -383,14 +388,17 @@ public class proyectoProgra extends JFrame
                                     } else if ((B == 2) && (acta[x] == 1) && (ngrupo[x] == 21191)) {
                                         JOptionPane.showMessageDialog(null, "Grupo" + ngrupo[x] + "\n\n" + numa[x] + "\n Nombre:" + noma[x] + "\n Clase:" + ngrupo[x] + "\n\n Calificaciones:" + prom6[x] + "," + prom7[x] + "," + prom8[x] + "," + prom9[x] + "," + prom10[x] + "\n", "Alumno", JOptionPane.PLAIN_MESSAGE);
                                     }
+                                    if((acta[x]==0)&&(ngrupo[x]==11191)){
+                                        JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
+                                    } else if((acta[x]==0)&&(ngrupo[x]==21191)){
+                                        JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
+                                    }
                                 }
                             }else if(subm==3){
                             }else{
                             }
                             rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra consulta?", "ALUMNO", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                         }while(rep==JOptionPane.YES_OPTION);
-                    }else {
-                        JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
                     }
                 } else if (menu == 3) {
                     if (bully == 1) {
