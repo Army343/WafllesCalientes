@@ -20,14 +20,14 @@ public class proyectoProgra extends JFrame
         int x = 1, cor = 0, grupo = 0, exi = 0;                       //Variable ubicación y clave
         int A;                         //Variable de número para los alumnos
         int y = 1;                        //Variable para saber si el profesor ya esta asignado a una materia de un grupo
-        int var=0, ca=0, cb=0;;
-        int rep = 0;                      //Repeticiones
+        int ca=0, cb=0;
+        int rep;                      //Repeticiones
         int p=1;
         int grupo11191 = 0, grupo21191 = 0;
-        float promst=0, promt=0, pro=0;
+        float pro=0;
         int asigmat;                      //Asignar materia
         int bully=0;                      //Activación acciones alumnos, Pregunta materia
-        int otram = 0;                    //por si el profesor impartira otra materia
+        int otram;                    //por si el profesor impartira otra materia
         String[] clavp = new String[20];  //Clave profesores
         double matcod[] = new double[11]; //Códigos materias
         int[] acta = new int[63];         //Activación alumnos
@@ -39,11 +39,9 @@ public class proyectoProgra extends JFrame
         int[] ngrupo=new int[93];         //numero de grupo, trabajemos el 11191, 21191
         int[] nump=new int[20];           //Número profesror
         int[] numa=new int[63];           //Número alumno
-        int[] almmat=new int[63];          //
         float califa=0;                     //Primera calificación
         float califb=0;                     //Segunda calificación
         float califc=0;                     //Tercera calificación
-        float[] prom=new float [63];      //Promedio general de los alumnos
         float[] prom1=new float[31];      //Promedio materia 1
         float[] prom2=new float[31];      //Promedio materia 2
         float[] prom3=new float[31];      //Promedio materia 3
@@ -54,9 +52,8 @@ public class proyectoProgra extends JFrame
         float[] prom8=new float[31];      //Promedio materia 8
         float[] prom9=new float[31];      //Promedio materia 9
         float[] prom10=new float[31];      //Promedio materia 10
-        int[] matal = new int[23];
-        int xnum = 0, m;
-        String bus = "";
+        int xnum, m;
+        String bus;
         int masto=0;    //double random;
         do {
             try {
@@ -74,7 +71,7 @@ public class proyectoProgra extends JFrame
                                 apelpp[p] = apelpp[p].toUpperCase();
                                 apelmp[p] = JOptionPane.showInputDialog("Ingrese el apellido materno del profesor.");
                                 apelmp[p] = apelmp[p].toUpperCase();
-                                clavp[p] = nump[p] + apelpp[p].substring(0, 2) + apelmp[p].charAt(0) + nomp[p].charAt(0);
+                                clavp[x] = nump[p] + apelpp[p].substring(0, 2) + apelmp[p].charAt(0) + nomp[p].charAt(0);
                                 JOptionPane.showMessageDialog(null, "La clave de maestro es:\n" + clavp[x], "CLAVE", JOptionPane.PLAIN_MESSAGE);
                                 rep = JOptionPane.showOptionDialog(null, "¿Desea hacer otra captura?", "PROFESOR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                 p = p + 1;
@@ -344,7 +341,7 @@ public class proyectoProgra extends JFrame
                                             }else{
                                                 JOptionPane.showMessageDialog(null, "Materia inexistente", "Error", JOptionPane.ERROR_MESSAGE);
                                             }
-                                            JOptionPane.showMessageDialog(null, "Código materia: "+matcod[m]+"\n\nCalificaciones:\n"+califa+califb+califc+"\nPromedio: "+pro, "Error", JOptionPane.PLAIN_MESSAGE);
+                                            //JOptionPane.showMessageDialog(null, "Código materia: "+matcod[m]+"\n\nCalificaciones:\n"+califa+"\n\n"+califb+"\n\n"+califc, "Error", JOptionPane.INFORMATION_MESSAGE);
                                             rep = JOptionPane.showOptionDialog(null, "¿Desea ingresar otra materia?", "CLASE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
                                         }while(rep==JOptionPane.YES_OPTION);
                                     }else{
@@ -370,13 +367,13 @@ public class proyectoProgra extends JFrame
                                 A = Integer.parseInt(JOptionPane.showInputDialog("Ingrese No. contable del alumno."));
                                 for (x = 0; x < 94; x++) {
                                     if((A == numa[x]) && (acta[x] == 1)&&(ngrupo[x]==11191)){
-                                        JOptionPane.showMessageDialog(null,"Grupo\n"+ngrupo[x]+numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom1[x]+","+prom2[x]+","+prom3[x]+","+prom4[x]+","+prom5[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
+                                        JOptionPane.showMessageDialog(null,"Grupo\n"+ngrupo[x]+numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom1[x]+"\n"+prom2[x]+"\n"+prom3[x]+"\n"+prom4[x]+"\n"+prom5[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
                                     }else if((A == numa[x]) && (acta[x] == 1)&&(ngrupo[x]==21191)){
-                                        JOptionPane.showMessageDialog(null,"Grupo"+ngrupo[x]+"\n\n"+numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom6[x]+","+prom7[x]+","+prom8[x]+","+prom9[x]+","+prom10[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
+                                        JOptionPane.showMessageDialog(null,"Grupo"+ngrupo[x]+"\n\n"+numa[x]+"\n Nombre:"+noma[x]+"\n Clase:"+ngrupo[x]+"\n\n Calificaciones:"+prom6[x]+"\n"+prom7[x]+"\n"+prom8[x]+"\n"+prom9[x]+"\n"+prom10[x]+"\n","Alumno",JOptionPane.PLAIN_MESSAGE);
                                     }
-                                    if((numa[x]!=A)&&(acta[x]==0)&&(ngrupo[x]==11191)){
+                                    if((A!=numa[x])&&(acta[x]==0)&&(ngrupo[x]==11191)){
                                         JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
-                                    } else if((numa[x]!=A)&&(acta[x]==0)&&(ngrupo[x]==21191)){
+                                    } else if((A!=numa[x])&&(acta[x]==0)&&(ngrupo[x]==21191)){
                                         JOptionPane.showMessageDialog(null, "Ingrese un registro", "ERROR", JOptionPane.PLAIN_MESSAGE);
                                     }
                                 }
@@ -486,3 +483,4 @@ public class proyectoProgra extends JFrame
         }while (menu != 5);
     }
 }
+
